@@ -96,26 +96,45 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
                 </View>
             </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => navigation.navigate('FetchList')}>
+                <View style={styles.navigateBtn}>
+                    <Text style={styles.navigateBtnText}>Fetch List</Text>
+                </View>
+            </TouchableOpacity>
+            {/* Map button */}
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Map')}
+            >
+                <View style={styles.mapBtn}>
+                    <Text style={styles.mapBtnText}>Open Map</Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Image')}>
+                <View style={styles.ImageBtn}>
+                    <Text style={styles.ImageText}>Choose or Take Image</Text>
+                </View>
+            </TouchableOpacity>
+
+
+
             {/* Display API Response */}
             {apiData && (
-    <View style={styles.apiResponse}>
-        <Text style={styles.apiResponseText}>Fetched Data:</Text>
-        {Object.keys(apiData).map((key) => (
-            <View key={key} style={styles.keyValuePair}>
-                <Text style={styles.keyText}>{key}:</Text>
-                <Text style={styles.valueText}>
-                    {typeof apiData[key] === 'object' ? JSON.stringify(apiData[key]) : 
-                        typeof apiData[key] === 'boolean' ? (apiData[key] ? 'true' : 'false') :
-                        apiData[key]}
-                </Text>
-            </View>
-        ))}
-    </View>
-)}
-
+                <View style={styles.apiResponse}>
+                    <Text style={styles.apiResponseText}>Fetched Data:</Text>
+                    {Object.keys(apiData).map((key) => (
+                        <View key={key} style={styles.keyValuePair}>
+                            <Text style={styles.keyText}>{key}:</Text>
+                            <Text style={styles.valueText}>
+                                {typeof apiData[key] === 'object' ? JSON.stringify(apiData[key]) :
+                                    typeof apiData[key] === 'boolean' ? (apiData[key] ? 'true' : 'false') :
+                                        apiData[key]}
+                            </Text>
+                        </View>
+                    ))}
+                </View>
+            )}
         </View>
-
-
     );
 };
 
@@ -209,6 +228,61 @@ const styles = StyleSheet.create({
     valueText: {
         fontSize: 14,
         color: '#555',
+    },
+    navigateBtn: {
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        backgroundColor: '#ffc107',
+        borderColor: '#ffc107',
+    },
+    navigateBtnText: {
+        fontSize: 18,
+        lineHeight: 26,
+        fontWeight: '600',
+        color: '#fff',
+    },
+    mapBtn: {
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        backgroundColor: '#ff5722',
+        borderColor: '#ff5722',
+    },
+    mapBtnText: {
+        fontSize: 18,
+        lineHeight: 26,
+        fontWeight: '600',
+        color: '#fff',
+    },
+
+    ImageBtn: {
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        backgroundColor: '#ff5733',
+        borderColor: '#ff5733',
+    },
+    ImageText: {
+        fontSize: 18,
+        lineHeight: 26,
+        fontWeight: '600',
+        color: '#ffca28',
     },
 });
 
